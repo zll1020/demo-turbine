@@ -1,0 +1,27 @@
+server:
+  port: 8031
+spring:
+  application:
+    name: turbine-provider
+Spring:
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    virtual-host-name: turbine-provider
+
+turbine:
+  app-config: movie-provider,user-provider
+  cluster-name-expression: "'default'"
